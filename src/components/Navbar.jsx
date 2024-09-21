@@ -26,12 +26,17 @@ const Navbar = () => {
             <span className="text-lg hidden sm:block font-medium">ToDesktop</span>
           </a>
           {/* Search Bar */}
-          <div className="bg-white px-1 flex items-center justify-center rounded">
+          <div className="hidden sm:block">
+          <div className="bg-white text-black p-1 flex flex-row items-center justify-center rounded ">
             <img src={searchlogo} className="max-w-8 max-h-8" alt="" />
             <input type="text" className="rounded outline-none w-36 sm:w-full" />
           </div>
+          </div>
         </div>
-
+        <div className="bg-white sm:hidden p-1  text-black px-1 flex items-center justify-center rounded">
+            <img src={searchlogo} className="max-w-8 max-h-8" alt="" />
+            <input type="text" className="rounded outline-none w-36 sm:w-48" />
+          </div>
         {/* Desktop Navbar Links */}
         <div className="hidden md:flex flex-col md:flex-row font-medium">
           {navele.map((ele, idx) => (
