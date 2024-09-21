@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import logo from '../assets/react.svg';
-import navlogo from '../assets/navlogo.png';
+import navlogo from '../assets/navlogo.svg';
 import searchlogo from '../assets/searchlogo.png';
 
 const Navbar = () => {
@@ -18,22 +18,22 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className='p-2 px-10 flex bg-[#122a4f] text-white justify-between items-center flex-wrap'>
+      <nav className='p-2 px-2 sm:px-10 flex bg-[#122a4f] text-white justify-between items-center flex-wrap'>
         <div className='flex gap-2 md:gap-10'>
-            {/* Logo */}
-        <a href="#" className="flex gap-2 items-center">
-          <img className="object-cover rounded-full w-10 h-10" src={logo} alt="logo" />
-          <span className="text-lg hidden sm:block font-medium">ToDesktop</span>
-        </a>
-        {/* Search Bar */}
-        <div className="bg-white  px-1 flex items-center justify-center rounded">
-            <img src={searchlogo} className="max-w-8 max-h-8 " alt="" />
-            <input type="text" className="rounded outline-none  " />
-        </div>
+          {/* Logo */}
+          <a href="#" className="flex gap-2 items-center">
+            <img className="object-cover rounded-full w-10 h-10" src={logo} alt="logo" />
+            <span className="text-lg hidden sm:block font-medium">ToDesktop</span>
+          </a>
+          {/* Search Bar */}
+          <div className="bg-white px-1 flex items-center justify-center rounded">
+            <img src={searchlogo} className="max-w-8 max-h-8" alt="" />
+            <input type="text" className="rounded outline-none w-36 sm:w-full" />
+          </div>
         </div>
 
         {/* Desktop Navbar Links */}
-        <div className="hidden md:flex  flex-col md:flex-row font-medium">
+        <div className="hidden md:flex flex-col md:flex-row font-medium">
           {navele.map((ele, idx) => (
             <a
               key={idx}
@@ -48,7 +48,12 @@ const Navbar = () => {
 
         {/* Mobile Menu Icon */}
         <button className='md:hidden' onClick={toggleMobileMenu}>
-          <img src={navlogo} className="object-cover w-12 h-12" alt="navlogo" />
+          <img
+            src={navlogo}
+            className="object-cover w-12 h-12"
+            alt="navlogo"
+            style={{ filter: 'invert(100%)' }} // This will make the navlogo white
+          />
         </button>
       </nav>
 
@@ -59,11 +64,11 @@ const Navbar = () => {
             <a
               key={idx}
               href="#"
-              className={`cursor-pointer ${active === idx ? 'text-blue-500' : 'text-black'}`}
-              onClick={() =>{ 
-                  toggleMobileMenu();
+              className={`cursor-pointer font-semibold ${active === idx ? 'text-blue-500' : 'text-black'}`}
+              onClick={() => {
+                toggleMobileMenu();
                 handleClick(idx);
-            }}
+              }}
             >
               {ele}
             </a>
